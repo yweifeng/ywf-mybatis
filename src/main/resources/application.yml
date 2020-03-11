@@ -1,0 +1,10 @@
+mybatis:
+  check-config-location: true
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath*:mapper/*Mapper.xml
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.60.15:3306/demo?characterEncoding=utf8&useSSL=false
+    username: root
+    password: linewell@2016

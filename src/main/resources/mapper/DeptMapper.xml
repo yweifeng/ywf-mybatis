@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ywf.mybatis.mapper.IDeptMapper">
+
+    <resultMap type="Dept" id="deptResultMap">
+        <result property="id" column="dept_id"/>
+        <result property="deptName" column="dept_name"/>
+        <collection property="employList" ofType="Employ" column="dept_id">
+            <id property="id" column="employ_id"></id>
+            <result property="employName" column="employ_name"/>
+        </collection>
+    </resultMap>
+    <!-- 获取所有部门信息，包含部门底下的员工 -->
+    <select id="findAll" resultMap="deptResultMap">
+        SELECT d.*,e.id as employ_id, e.employ_name FROM dept d LEFT JOIN employ e ON e.dept_id = d.id
+    </select>
+</mapper>
