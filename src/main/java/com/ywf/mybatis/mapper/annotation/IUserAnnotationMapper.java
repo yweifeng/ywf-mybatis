@@ -1,4 +1,4 @@
-package com.ywf.mybatis.mapper;
+package com.ywf.mybatis.mapper.annotation;
 
 import com.ywf.mybatis.entity.User;
 import org.apache.ibatis.annotations.*;

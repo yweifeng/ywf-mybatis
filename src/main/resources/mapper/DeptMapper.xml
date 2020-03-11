@@ -14,4 +14,62 @@
     <select id="findAll" resultMap="deptResultMap">
         SELECT d.*,e.id as employ_id, e.employ_name FROM dept d LEFT JOIN employ e ON e.dept_id = d.id
     </select>
+
+    <select id="findList" resultType="Dept">
+        SELECT * FROM DEPT
+        <where>
+            <choose>
+                <when test="deptName != null">
+                    <bind name="deptNameLike" value="'%' + deptName + '%'"></bind>
+                    and dept_name like #{deptNameLike}
+                </when>
+            </choose>
+        </where>
+    </select>
+
+    <select id="findByForeachArray" resultType="Dept">
+        SELECT * FROM DEPT
+        <where>
+            id IN
+            <foreach collection="idArray" item="ids" open="(" close=")" separator=",">
+                #{ids}
+            </foreach>
+        </where>
+    </select>
+
+    <select id="findByForeachList" resultType="Dept">
+        SELECT * FROM DEPT
+        <where>
+            id IN
+            <foreach collection="idList" item="ids" open="(" close=")" separator=",">
+                #{ids}
+            </foreach>
+        </where>
+    </select>
+
+    <select id="findByForeachMap" resultType="Dept">
+        SELECT * FROM DEPT
+        <where>
+            id IN
+            <foreach collection="idMap.idArray" item="ids" open="(" close=")" separator=",">
+                #{ids}
+            </foreach>
+        </where>
+    </select>
+
+    <select id="findByIdsAndDeptName" resultType="Dept">
+        SELECT * FROM DEPT
+        <where>
+            <if test="queryMap.idArray != null">
+                and id IN
+                <foreach collection="queryMap.idArray" item="ids" open="(" close=")" separator=",">
+                    #{ids}
+                </foreach>
+            </if>
+            <if test="queryMap.deptName != null">
+                and dept_name like concat('%', #{queryMap.deptName}, '%');
+            </if>
+        </where>
+    </select>
+
 </mapper>

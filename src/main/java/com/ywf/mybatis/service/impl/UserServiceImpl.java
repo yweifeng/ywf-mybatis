@@ -1,7 +1,6 @@
 package com.ywf.mybatis.service.impl;
 
 import com.ywf.mybatis.entity.User;
-import com.ywf.mybatis.mapper.IUserAnnotationMapper;
 import com.ywf.mybatis.mapper.IUserMapper;
 import com.ywf.mybatis.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;

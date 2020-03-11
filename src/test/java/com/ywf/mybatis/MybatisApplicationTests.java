@@ -14,7 +14,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @SpringBootTest
 class MybatisApplicationTests {
@@ -94,4 +97,40 @@ class MybatisApplicationTests {
         List<Student> studentList = studentService.findAll();
         log.info(studentList.toString());
     }
+
+    /**
+     * 动态SQL
+     */
+    @Test
+    void sql() {
+        List<Dept> deptList = deptService.findList("研发");
+        log.info(deptList.toString());
+    }
+
+    /**
+     * 动态SQL foreach
+     */
+    @Test
+    void sqlForeach() {
+//        int[] idArray = new int[]{1, 2};
+//        List<Dept> deptList = deptService.findByForeach(idArray);
+
+//        List<Integer> idList = new ArrayList();
+//        idList.add(1);
+//        idList.add(2);
+//        List<Dept> deptList = deptService.findByForeach(idList);
+
+//        int[] idArray = new int[]{1, 2};
+//        Map idMap = new HashMap();
+//        idMap.put("idArray", idArray);
+//        List<Dept> deptList = deptService.findByForeach(idMap);
+
+        int[] idArray = new int[]{1, 2};
+        Map queryMap = new HashMap();
+        queryMap.put("idArray", idArray);
+        queryMap.put("deptName", "研发");
+        List<Dept> deptList = deptService.findByIdsAndDeptName(queryMap);
+        log.info(deptList.toString());
+    }
+
 }
