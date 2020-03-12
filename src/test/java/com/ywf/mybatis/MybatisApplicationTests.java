@@ -133,4 +133,36 @@ class MybatisApplicationTests {
         log.info(deptList.toString());
     }
 
+    /**
+     * 一对多 延迟加载
+     */
+    @Test
+    void lazyOne2Many() {
+        List<Dept> deptList = deptService.lazyFindAll();
+        for (Dept dept : deptList) {
+            log.info(dept.getDeptName());
+        }
+    }
+
+    /**
+     * 多对一 延迟加载
+     */
+    @Test
+    void lazyMany2One() {
+        List<Employ> employList = employService.lazyFindAll();
+        for (Employ employ : employList) {
+            log.info(employ.getEmployName());
+        }
+    }
+
+    /**
+     * 多对多 延迟加载
+     */
+    @Test
+    void lazyMany2Many() {
+        List<Student> studentList = studentService.lazyFindAll();
+        for (Student student : studentList) {
+            log.info(student.getStudentName());
+        }
+    }
 }

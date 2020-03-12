@@ -53,4 +53,17 @@ public interface IDeptMapper {
      * @return
      */
     List<Dept> findByIdsAndDeptName(@Param("queryMap") Map queryMap);
+
+    /**
+     * 加载部门信息，延迟加载用户信息
+     * @return
+     */
+    List<Dept> lazyFindAll();
+
+    /**
+     * 根据部门id获取部门详情
+     * @param id
+     * @return
+     */
+    Dept getById(@Param("id") int id);
 }

@@ -16,11 +16,16 @@ import java.util.List;
 public class EmployServiceImpl implements IEmployService {
 
     @Autowired
-//    private IEmployMapper employMapper;
-    private IEmployAnnotationMapper employMapper;
+    private IEmployMapper employMapper;
+//    private IEmployAnnotationMapper employMapper;
 
     @Override
     public List<Employ> findAll() {
         return employMapper.findAll();
+    }
+
+    @Override
+    public List<Employ> lazyFindAll() {
+        return employMapper.lazyFindAll();
     }
 }

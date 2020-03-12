@@ -35,12 +35,12 @@ public class Dept {
         this.employList = employList;
     }
 
-    @Override
-    public String toString() {
-        return "Dept{" +
-                "id=" + id +
-                ", deptName='" + deptName + '\'' +
-                ", employList=" + employList +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Dept{" +
+//                "id=" + id +
+//                ", deptName='" + deptName + '\'' +
+//                ", employList=" + employList +
+//                '}';
+//    }
 }

@@ -49,4 +49,9 @@ public class DeptServiceImpl implements IDeptService {
     public List<Dept> findByIdsAndDeptName(Map queryMap) {
         return deptMapper.findByIdsAndDeptName(queryMap);
     }
+
+    @Override
+    public List<Dept> lazyFindAll() {
+        return deptMapper.lazyFindAll();
+    }
 }

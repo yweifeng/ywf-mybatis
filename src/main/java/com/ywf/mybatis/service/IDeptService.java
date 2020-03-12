@@ -51,4 +51,10 @@ public interface IDeptService {
      * @return
      */
     List<Dept> findByIdsAndDeptName(Map queryMap);
+
+    /**
+     * 加载部门信息，延迟加载用户信息
+     * @return
+     */
+    List<Dept> lazyFindAll();
 }

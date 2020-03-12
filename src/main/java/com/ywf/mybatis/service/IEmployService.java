@@ -15,4 +15,10 @@ public interface IEmployService {
      * @return
      */
     List<Employ> findAll();
+
+    /**
+     * 获取员工信息，延迟加载所属部门信息
+     * @return
+     */
+    List<Employ> lazyFindAll();
 }

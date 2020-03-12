@@ -14,4 +14,22 @@
     <select id="findAll" resultMap="employResultMap">
         SELECT e.id as employ_id, e.employ_name, d.* FROM employ e LEFT JOIN dept d ON e.dept_id = d.id
     </select>
+
+    <!-- 根据部门ID获取员工信息 -->
+    <select id="findByDeptId" resultType="Employ" parameterType="Integer">
+        SELECT * FROM employ where dept_id = #{deptId}
+    </select>
+
+    <resultMap id="lazyEmployResultMap" type="Employ">
+        <result property="id" column="e_id" />
+        <result property="employName" column="employ_name" />
+        <association property="dept" column="dept_id" fetchType="lazy"
+            select="com.ywf.mybatis.mapper.IDeptMapper.getById"
+        />
+    </resultMap>
+
+    <!--获取所有员工信息， 懒加载部门信息 -->
+    <select id="lazyFindAll" resultMap="lazyEmployResultMap">
+        SELECT * FROM employ e
+    </select>
 </mapper>

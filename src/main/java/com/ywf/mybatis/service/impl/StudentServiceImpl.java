@@ -16,11 +16,16 @@ import java.util.List;
 public class StudentServiceImpl implements IStudentService {
 
     @Autowired
-//    private IStudentMapper studentMapper;
-    private IStudentAnnotationMapper studentMapper;
+    private IStudentMapper studentMapper;
+//    private IStudentAnnotationMapper studentMapper;
 
     @Override
     public List<Student> findAll() {
         return studentMapper.findAll();
+    }
+
+    @Override
+    public List<Student> lazyFindAll() {
+        return studentMapper.lazyFindAll();
     }
 }

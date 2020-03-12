@@ -14,4 +14,10 @@ public interface IStudentService {
      * @return
      */
     List<Student> findAll();
+
+    /**
+     * 获取所有学生信息，懒加载学习的课程信息
+     * @return
+     */
+    List<Student> lazyFindAll();
 }

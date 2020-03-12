@@ -32,12 +32,12 @@ public class Employ {
         this.dept = dept;
     }
 
-    @Override
-    public String toString() {
-        return "Employ{" +
-                "id=" + id +
-                ", employName='" + employName + '\'' +
-                ", dept=" + dept +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Employ{" +
+//                "id=" + id +
+//                ", employName='" + employName + '\'' +
+//                ", dept=" + dept +
+//                '}';
+//    }
 }

@@ -72,4 +72,22 @@
         </where>
     </select>
 
+    <resultMap id="lazyDeptResultMap" type="Dept">
+        <result column="d_id" property="id" />
+        <result column="dept_name" property="deptName" />
+        <collection property="employList" ofType="Employ" column="d_id"
+                    select="com.ywf.mybatis.mapper.IEmployMapper.findByDeptId"
+                    fetchType="lazy"
+        />
+    </resultMap>
+
+    <!-- 获取所有部门信息，延迟加载部门底下的员工新 -->
+    <select id="lazyFindAll" resultMap="lazyDeptResultMap">
+        SELECT d.id as d_id, d.dept_name FROM dept d
+    </select>
+
+    <!-- 根据ID获取部门信息 -->
+    <select id="getById" resultType="Dept">
+        SELECT * FROM dept WHERE id = #{id}
+    </select>
 </mapper>

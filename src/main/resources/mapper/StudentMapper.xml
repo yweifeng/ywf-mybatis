@@ -15,4 +15,16 @@
         SELECT s.*, s.id as s_id,c.*, c.id as c_id FROM student s, course c, student_to_course sc
         where sc.student_id = s.id and sc.course_id = c.id
     </select>
+
+    <resultMap type="Student" id="lazyStudentResultMap">
+        <result property="id" column="student_id"/>
+        <result property="studentName" column="student_name"/>
+        <collection property="courseList" ofType="Course" column="course_id"
+            select="com.ywf.mybatis.mapper.ICourseMapper.getById"
+        />
+    </resultMap>
+    <!-- 获取所有学生信息，懒加载学生学习的课程信息 -->
+    <select id="lazyFindAll" resultMap="lazyStudentResultMap">
+        SELECT s.*, sc.course_id FROM student s, student_to_course sc
+    </select>
 </mapper>
