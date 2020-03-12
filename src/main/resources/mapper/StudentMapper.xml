@@ -20,6 +20,7 @@
         <result property="id" column="student_id"/>
         <result property="studentName" column="student_name"/>
         <collection property="courseList" ofType="Course" column="course_id"
+                    fetchType="lazy"
             select="com.ywf.mybatis.mapper.ICourseMapper.getById"
         />
     </resultMap>
