@@ -1,9 +1,11 @@
 package com.ywf.mybatis.entity;
 
+import java.io.Serializable;
+
 /**
  * @Author:ywf
  */
-public class User{
+public class User implements Serializable {
     private int id;
     private String userName;
     private String userPassword;
